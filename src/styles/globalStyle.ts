@@ -10,8 +10,8 @@ padding: 0;
 font-family: "inter", sans-serif;
 
   }
-    h1, h2, p, ul, li {
-    margin: 0,
+    h1, h2, p, ul, li, figure {
+    margin: 0;
     padding: 0;
     }
 `
