@@ -9,5 +9,5 @@ export type MessageProps = {
 export interface FormComponentProps {
   inputs: InputProps[]
   buttons: ButtonProps[]
-  message?: MessageProps[]
+  message?: MessageProps // Alterado para um único objeto
 }
