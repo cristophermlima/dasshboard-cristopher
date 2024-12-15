@@ -1,6 +1,6 @@
 import { Theme } from '@/types'
 
-export const lighTheme: Theme = {
+export const lightTheme: Theme = {
   appBackground: '#FFF',
   appColor: '#000',
   appDefaultStroke: '#E0E0E0',
@@ -13,7 +13,7 @@ export const lighTheme: Theme = {
     alertHover: '#D80000',
     disabled: '#CCC',
     disabledColor: '#666',
-    primary: '#0C70F',
+    primary: '#0C70F2',
     primaryColor: '#FFF',
     primaryHover: '#0061DE',
   },
