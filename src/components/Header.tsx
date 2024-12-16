@@ -1,4 +1,3 @@
-
 import { Avatar, Box, Container } from '@mui/material'
 import styled from 'styled-components'
 import { pxToRem } from '@/utils'
@@ -12,19 +11,6 @@ const StyledHeader = styled.header`
   width: 100%;
 `
 
-import styled from 'styled-components'
-import { Avatar, Box, Container } from '@mui/material'
-import { pxToRem } from '@/utils'
-import { Link } from 'react-router-dom'
-import { Logo } from '@/components'
-
-const StyledHeader = styled.header`
-background-color:{( ${(props) => props.theme.appBackground};
-border-bottom: ${pxToRem(1)} solid ${(props) => props.theme.appDefaultStroke};
-border-bottom: ${pxToRem(37)}
-width: 100%;
-`
- f108850117795f3e25fcecc6eb5aef59f3aeb6c6
 function Header() {
   return (
     <StyledHeader>
@@ -52,8 +38,5 @@ function Header() {
     </StyledHeader>
   )
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> f108850117795f3e25fcecc6eb5aef59f3aeb6c6
 export default Header
