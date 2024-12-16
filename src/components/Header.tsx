@@ -10,6 +10,7 @@ const StyledHeader = styled.header`
   margin-bottom: ${pxToRem(37)};
   width: 100%;
 `
+
 function Header() {
   return (
     <StyledHeader>
