@@ -1,0 +1,6 @@
+* [32mdev                          [m f48dbf7 [[34morigin/dev[m] fix: fixing types import
+  feat/adding-styled-components[m 9b4a8d3 [[34morigin/feat/adding-styled-components[m: gone] Feat: Adding Styled Components
+  feat/create-theme            [m c53d23b [[34morigin/feat/create-theme[m: gone] Feat: Create Themes
+  feat/form-component          [m b76a085 [[34morigin/feat/form-component[m: gone] Fix Resolved build issues and updated FormComponent
+  feat/material-ui-insert      [m ec4764f [[34morigin/feat/material-ui-insert[m] Merge pull request #2 from cristophermlima/feat/create-theme
+  main                         [m 87b9ff8 [[34morigin/main[m: behind 12] Creating Routes

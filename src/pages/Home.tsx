@@ -8,6 +8,7 @@ function Home() {
       <Container maxWidth="lg">
         <CardComponent>CARD</CardComponent>
       </Container>
+      <Header />
     </>
   )
 }
