@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const StyledHeader = styled.header`
   background-color: ${(props) => props.theme.appBackground};
   border-bottom: ${pxToRem(1)} solid ${(props) => props.theme.appDefaultStroke};
-  margin-bottom: ${pxToRem(37)}
+  margin-bottom: ${pxToRem(37)};
   width: 100%;
 `
 
