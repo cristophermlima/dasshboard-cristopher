@@ -13,4 +13,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://reactts.dnc.group', // URL da API
+        changeOrigin: true, // Habilita mudança de origem para evitar problemas de CORS
+        rewrite: (path) => path.replace(/^\/api/, ''), // Remove o prefixo "/api" da URL
+      },
+    },
+  },
 })
