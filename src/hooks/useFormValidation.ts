@@ -2,34 +2,43 @@ import { useState, useEffect } from 'react'
 import { InputProps } from '@/types'
 
 export const useFormValidation = (inputs: InputProps[]) => {
+  // Garantindo que input.name seja sempre string
   const [formValues, setFormValues] = useState(
-    inputs.map((input) => input.value || '')
+    inputs.reduce(
+      (acc, input) => {
+        if (input.name) {
+          acc[input.name] = String(input.value || '') // Forçando o valor para string
+        }
+        return acc
+      },
+      {} as Record<string, string>
+    )
   )
   const [formValid, setFormValid] = useState(false)
 
   useEffect(() => {
-    const allFieldsValid = inputs.every((input, index) => {
-      const value = formValues[index]
+    const allFieldsValid = inputs.every((input) => {
+      const value = input.name ? formValues[input.name] : '' // Verificação adicional para input.name
       if (input.required && !value) {
         return false
       }
       if (input.type === 'email') {
-        return /\S+@\S+\.\S+/.test(String(formValues[index]))
+        return /\S+@\S+\.\S+/.test(String(value))
       }
       if (input.type === 'password') {
-        return String(formValues[index]).length > 7
+        return String(value).length > 7
       }
       return true
     })
     setFormValid(allFieldsValid)
   }, [formValues, inputs])
 
-  const handleChange = (index: number, value: string) => {
-    setFormValues((prevValues) => {
-      const newValues = [...prevValues]
-      newValues[index] = value
-      return newValues
-    })
+  const handleChange = (name: string, value: string) => {
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value, // Atualize o valor pela chave do nome
+    }))
   }
+
   return { formValues, formValid, handleChange }
 }
