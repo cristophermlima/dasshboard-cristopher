@@ -32,6 +32,7 @@ function Login() {
   const { data, loading, error, postData } = usePost<LoginData, LoginPostData>(
     'login'
   )
+
   const { formValues, formValid, handleChange } = useFormValidation(inputs)
 
   const handleMessage = (): MessageProps => {
@@ -59,14 +60,17 @@ function Login() {
   }
 
   useEffect(() => {
+    console.log(data?.jwt_token)
     if (data?.jwt_token) {
       const decoded: DecodedJWT = jwtDecode(data?.jwt_token)
-      Cookies.set('Aythorization', data?.jwt_token, {
+      Cookies.set('Authorization', data?.jwt_token, {
         expires: jwtExpirationDateConverter(decoded.exp),
         secure: true,
       })
     }
-    if (Cookies.get('Authorization')) navigate('/home')
+    if (Cookies.get('Authorization')) {
+      navigate('/home')
+    }
   }, [data, navigate])
 
   return (
