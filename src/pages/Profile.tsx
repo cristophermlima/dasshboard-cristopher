@@ -50,23 +50,23 @@ function Profile() {
     data: profileData,
     loading: profileLoading,
     error: profileError,
-  } = useGet<ProfileData[]>('profile')
+  } = useGet<ProfileData>('profile')
 
   const {
     data: profileUpdateData,
     putData: profilePutData,
     loading: profileUpdateLoading,
     error: profileUpdateError,
-  } = usePut<ProfileEditableData>('profile/update') // Corrigido para objeto único
+  } = usePut<ProfileEditableData>('profile/update')
 
   const { deleteData: profileDeleteData, loading: profileDeleteLoading } =
     useDelete('profile/delete')
 
   useEffect(() => {
-    if (profileData && profileData[0]) {
-      handleChange(0, profileData[0].name)
-      handleChange(1, profileData[0].email)
-      handleChange(2, profileData[0].phone)
+    if (profileData) {
+      if (profileData.name) handleChange('0', profileData.name)
+      if (profileData.email) handleChange('1', profileData.email)
+      if (profileData.phone) handleChange('2', profileData.phone)
     }
   }, [profileData])
 
@@ -77,13 +77,13 @@ function Profile() {
     { name: 'phone', type: 'tel', placeholder: 'Telefone', required: true },
   ]
 
-  const { formValues, formValid, handleChange } = useFormValidation(inputs)
+  const { formValues, formValid, handleChange } = useFormValidation(inputs) // Especificando que formValues é um array de strings
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     await profilePutData({
-      name: String(formValues[0]),
-      phone: String(formValues[2]),
+      name: String(formValues[0]), // Garantindo que seja uma string
+      phone: String(formValues[2]), // Garantindo que seja uma string
     })
   }
 
@@ -119,7 +119,7 @@ function Profile() {
       })
     }
     clearMessage()
-  }, [profileUpdateData, profileError, profileUpdateError])
+  }, [profileUpdateData, profileUpdateError])
 
   return (
     <>
@@ -133,7 +133,7 @@ function Profile() {
                   profileLoading ? 'skeleton-loading skeleton-loading-mh-2' : ''
                 }
               >
-                {!profileLoading && profileData && profileData[0] && (
+                {!profileLoading && profileData && (
                   <>
                     <StyledH2 className="mb1">Seus Dados</StyledH2>
                     <FormComponent
@@ -142,8 +142,8 @@ function Profile() {
                         value: formValues[index] || '',
                         onChange: (e: ChangeEvent<HTMLInputElement>) =>
                           handleChange(
-                            index,
-                            (e.target as HTMLInputElement).value
+                            'index',
+                            (e.target as HTMLInputElement).value.toString()
                           ),
                       }))}
                       buttons={[
